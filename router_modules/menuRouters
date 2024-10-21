@@ -1,0 +1,74 @@
+const express=require('express');
+const meRouter=express.Router();
+const menuItems=require('../modules/menuItmes')
+
+
+
+meRouter.post('/',async(req, res)=>{
+    try {
+
+      const dataI =req.body
+      console.log(dataI);
+      
+       
+      // create the new person document using the Mongoose model
+      const NewItems= new menuItems(dataI);
+
+       // Save the new  person to the database
+     const response=await NewItems.save();
+     console.log('data saved');
+     res.status(200).json(response)
+
+      
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({error:"internet server is busy"})
+      
+    }
+  })
+
+
+  // get method menuitmes
+
+  meRouter.get('/', async (req,res)=>{
+    try {
+        const data =await menuItems.find();
+        console.log('data fetched');
+        res.status(200).json(data);
+        
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({error:'Internet Server Error'})
+      
+      
+    }
+  }),
+
+  meRouter.get('/:tasteType',async(req,res)=>{
+
+   try {
+
+    const tasteType=req.params.tasteType;
+
+    if(tasteType=='sweet' || tasteType=='spicy'){
+
+    const response = await menuItems.find({taste:tasteType});
+    console.log('response fatched');
+    res.status(200).json(response);
+    
+   }else{
+    res.status(404).json({error:"invalid taste "})
+   }
+    
+   } catch (error) {
+
+    console.log(error);
+    res.status(500).json({error:'Internet error'})
+    
+    
+   }
+
+
+  })
+
+  module.exports=meRouter;
