@@ -2,9 +2,12 @@
 const express = require('express')
 const app = express()
 const db=require('./db')
+// require('dotenv').config();
 
 const bodyParser=require('body-parser');
 app.use(bodyParser.json());
+
+const PORT=process.env.PORT ||300
 
 
 
@@ -40,4 +43,5 @@ app.get('/', function (req, res) {
   app.use('/menuitems',menuRouter1);
   
 
-app.listen(300,()=>console.log('live server'))
+// app.listen(300,()=>console.log('live server'))
+app.listen(PORT,()=>console.log('listening on port 300'))
