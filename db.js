@@ -3,9 +3,9 @@ require('dotenv').config();
 
 // Define the MongoDB connection URL
 
-// const  mongoURL ='mongodb://localhost:27017/hotels'  //Replace the databse name like hotels
+ const  mongoURL ='mongodb://localhost:27017/hotels'  //Replace the databse name like hotels
 //  const mongoURL ='mongodb+srv://raghuveersonkar64:Raghu1234@cluster0.ow6tc.mongodb.net/'
-  const mongoURL=process.env.DB_URL;
+ // const mongoURL=process.env.DB_URL;
 
 
 // set  up MongoDB connection

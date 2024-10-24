@@ -51,8 +51,8 @@ const logRequest =(req,res,next)=>{
 
 
   // Use the routers
-  app.use('/person',personRouter)
-  app.use('/menuitems',Localmiddleware,menuRouter1);
+  app.use('/person',Localmiddleware,personRouter)
+  app.use('/menuitems',menuRouter1);
   
 
 // app.listen(300,()=>console.log('live server'))

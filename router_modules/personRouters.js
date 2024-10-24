@@ -12,13 +12,15 @@ router.post('/',async(req,res)=>{
      // const {name,age,work , mobile ,email,address,salary}=req.body;
       const data=req.body;
 
-      console.log(req.body)
+      // console.log(req.body)
       // create the new person document using the Mongoose model
       // const newPerson= new Person({name,age,work,mobile ,email,address,salary});
-      const newPerson= new Person(data);
+      const newPerson=  new Person(data);
+      console.log(newPerson);
+      
     
       // Save the new  person to the database
-       const response=await newPerson.save();
+       const response = await newPerson.save();
        console.log('data saved');
        res.status(200).json(response)
        
