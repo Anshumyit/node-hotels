@@ -51,7 +51,7 @@ const logRequest =(req,res,next)=>{
 
 
   // Use the routers
-  app.use('/person',Localmiddleware,personRouter)
+  app.use('/person',personRouter)
   app.use('/menuitems',menuRouter1);
   
 
